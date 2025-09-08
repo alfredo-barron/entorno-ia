@@ -1,14 +1,20 @@
 # 🌸 Clasificación de Flores Iris usando Clasificador Bayesiano  
 
-Este proyecto es un **ejemplo educativo de Machine Learning** utilizando el dataset Iris y un **clasificador Naive Bayes**, ejecutable en **máquina local**, en una **máquina virtual con Ubuntu**, y dentro de un **contenedor Docker**.  
+Este proyecto es un **ejemplo educativo de Machine Learning** utilizando el dataset Iris y un **clasificador Naive Bayes**, ejecutable en **tres entornos**:
+
+- **Máquina local (host)**
+- **Máquina virtual (Ubuntu en VirtualBox/VMware)**
+- **Contenedor Docker**
 
 ---
 
 ## 📌 Objetivos del proyecto
 
-- Implementar un clasificador Bayesiano en Python.  
-- Ejecutar y evaluar modelos de ML en diferentes entornos: **local, máquina virtual y contenedores**.  
-- Comparar eficiencia, facilidad de uso y aplicabilidad en proyectos de IA.  
+
+- Implementar un clasificador Bayesiano en Python.
+- Ejecutar y evaluar modelos de ML en **diferentes entornos de virtualización**.
+- Medir y comparar **eficiencia de recursos** (CPU, RAM, tiempo).
+- Analizar ventajas y desventajas de **local, VM y contenedor**.
 
 ---
 
@@ -150,6 +156,52 @@ docker run --rm iris-bayes
 ```
 
 ✅ La salida será la misma que en los otros entornos.
+
+## 📊 Medición de consumo de recursos
+
+El objetivo es comparar eficiencia en los tres entornos.
+
+### 🖥️ Local (host)
+
+- Ejecutar:
+
+```bash
+time python iris_naive_bayes.py
+top      # o htop
+ps aux | grep python
+```
+
+### 💻 Máquina virtual (Ubuntu)
+
+- Dentro de la VM:
+
+```bash
+time python3 iris_naive_bayes.py
+top / htop
+```
+
+- Desde el host: observar el consumo global de la VM en el Administrador de tareas / Monitor del sistema.
+
+### 🐳 Contenedor Docker
+
+- Ejecutar el contenedor:
+
+```bash
+docker run --rm --name iris-test iris-bayes
+```
+
+- En otra terminal:
+
+```bash
+docker stats iris-test
+```
+
+### 📑 Registro sugerido
+
+- CPU (%)
+- RAM (MB)
+- Tiempos
+- Observaciones
 
 ## 📚 Referencias
 
